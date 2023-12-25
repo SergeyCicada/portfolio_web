@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/style/style.css">
+    <link rel="icon" type="image/png" href="/static/image/favicon.png">
+
+    <meta name="description" content="">
+    <meta name="keywords" content=" ">
+
+    <title>Personal folio</title>
+</head>
+<body>
+
+    <div class="page">
+
+        <!-- Header -->
+        <header class ="header">
+            <div class="container">
+                <div class="header-inner">
+                    <div class="header-brand">
+                        PYTHONDEVELOPER
+                    </div>
+
+                    <div class="header-logo">
+                       <\>
+                    </div>
+
+                    <nav class="header-nav">
+                        <a class="header-nav-link" href="/">Home</a>
+                        <a class="header-nav-link" href="/about/">About me</a>
+                        <a class="header-nav-link active" href="/contacts/">Contacts</a>
+                    </nav>
+                </div>
+            </div><!-- /.container -->
+        </header>
+
+
+        <div class="container">
+            <div class="content">
+                <div class="content-header">
+                    <h1 class="title">Write me a <span>message</span></h1>
+                    <div class="text">
+                        <p>     I am ready to provide additional information
+                            and discuss collaboration opportunities
+                        </p>
+                    </div>
+                </div>
+
+                <form class="form" action="/message/" method="get">
+                    <div class="form-group">
+                        <input class="input" type="text" name="name" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="email" name="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="tel" name="tel" placeholder="Phone">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="textarea" name="text" placeholder="Message"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-full"> Send message</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+         <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="contacts">
+                    <a class="contacts-link"  href="https://github.com/SergeyCicada">GitHub</a>
+                    <a class="contacts-link" href="mailto:SergeyKelme@yandex.ru">SergeyKelme@yandex.ru</a>
+                </div>
+            </div>
+        </footer>
+
+    </div><!-- /.page -->
+
+</body>
+</html>
