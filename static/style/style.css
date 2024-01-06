@@ -47,7 +47,7 @@ p {
 
 .header {
     padding: 1rem 0;
-    margin-bottom: 110px;
+    margin-bottom: 90   px;
 
     background: #2B7DED;
 
@@ -116,7 +116,7 @@ p {
 }
 
 .content {
-    width: 580px;
+    width: 610px;
 }
 
 .subtitle {
