@@ -24,7 +24,7 @@ def get_contacts():
 def get_message():
     name = request.args.get('name')
     email = request.args.get('email')
-    phone = request.args.get('tel')
+    phone = request.args.get('phone')
     message = request.args.get('text')
 
     string_send = f"Name: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}"
