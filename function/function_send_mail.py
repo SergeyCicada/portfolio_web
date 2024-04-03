@@ -3,7 +3,7 @@ from email.mime.text import MIMEText
 
 
 def send_email(message: str) -> str:
-
+    """function for sending message by email"""
     sender = ""
     password = ""
 

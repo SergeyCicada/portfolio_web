@@ -2,18 +2,12 @@
 ___
 This repository contains the code and files for creating a portfolio website using the Python programming language. This project provides developers with the ability to create and maintain their own online portfolios.
 
-### Installation
-Follow these instructions to install and run the project on your local machine.
+### Commands for start project in Docker:
 
-1. Clone this repository to your computer:
-  
-2. Navigate to the project directory:
 
-3. Install the dependencies:
-
-4. Run the application:
-
-5. Open a web browser and visit http://localhost:5000 to view your portfolio.
+1. sudo docker build -t portfolio .
+2. sudo docker run --name portfolio_project -p 5000:5000 -d portfolio
+3. Open a web browser and visit http://localhost:5000 to view your portfolio.
 ___
 ### Usage
 
