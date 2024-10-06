@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/style/style.css">
+    <link rel="icon" type="image/png" href="/static/image/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Personal folio</title>
+    <script src="https://unpkg.com/htmx.org@1.9.4"></script>
+</head>
+<body>
+    <div class="page">
+        <!-- Header -->
+        {% include 'header.html' %}
+
+         <!-- Main -->
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+
+
+        <!-- Footer -->
+        {%include 'footer.html' %}
+
+    </div><!-- /.page -->
+
+</body>
+
+</html>

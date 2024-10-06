@@ -1,11 +1,18 @@
 import smtplib
 from email.mime.text import MIMEText
 
+import os
+from dotenv import load_dotenv
+
 
 def send_email(message: str) -> str:
-    """function for sending message by email"""
-    sender = ""
-    password = ""
+    """
+        Function for sending message by email
+    """
+    load_dotenv()
+
+    sender = os.environ.get('MAIL_SENDER')
+    password = os.environ.get('MAIL_PASSWORD')
 
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.starttls()
