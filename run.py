@@ -39,7 +39,7 @@ def get_message():
         send_email(string_send)
         flash('Your message has been sent successfully!', 'success')
     except Exception as e:
-        # Обработка ошибок при отправке
+            # Error handling during submission."
         flash(f'An error occurred while sending your message: {str(e)}', 'error')
         return redirect(url_for('get_thank'))
 
