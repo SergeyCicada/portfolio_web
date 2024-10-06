@@ -1,3 +1,6 @@
+from crypt import methods
+
+import requests
 from dotenv import load_dotenv
 from flask import Flask, request, render_template, flash, redirect, url_for
 import os
@@ -19,7 +22,8 @@ def get_about():
 
 @app.route('/contacts/')
 def get_contacts():
-    return render_template('main/contacts.html')
+    recaptcha_site_key = os.environ.get('RECAPTCHA_SITE_KEY')
+    return render_template('main/contacts.html', recaptcha_site_key=recaptcha_site_key)
 
 @app.route('/thank/')
 def get_thank():
@@ -27,12 +31,27 @@ def get_thank():
 
 
 
-@app.route('/message/')
+@app.route('/message/', methods=['POST'])
 def get_message():
     name = request.args.get('name')
     email = request.args.get('email')
     phone = request.args.get('phone')
     message = request.args.get('text')
+    recaptcha_response = request.form.get('g-recaptcha-response')
+
+    # Проверка reCAPTCHA
+    secret_key = os.environ.get('RECAPTCHA_SECRET_KEY')
+    payload = {
+        'secret': secret_key,
+        'response': recaptcha_response
+    }
+    response = requests.post('https://www.google.com/recaptcha/api/siteverify', data=payload)
+    result = response.json()
+
+    if not result.get('success'):
+        print(result)
+        flash('reCAPTCHA verification failed. Please try again.', 'error')
+        return redirect(url_for('get_thank'))
 
     string_send = f"Name: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}"
     try:
