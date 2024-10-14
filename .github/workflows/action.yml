@@ -14,19 +14,20 @@ jobs:
         run: docker push sergeykelme/portfolio:$GITHUB_REF_NAME-$GITHUB_RUN_ID
   deploy:
     runs-on: ubuntu-latest
+    needs: build_and_push
     steps:
       - name: clone code
         uses: actions/checkout@v2
       - name: render configs
         run: |
-          mkdir deploy
-          cat docker-compose-ci.yml | envsubst > portfolio_web/docker-compose.yml
+          mkdir portfolio
+          cat docker-compose-ci.yml | envsubst > portfolio/docker-compose.yml
       - name: copy files to server
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          source: "portfolio_web/docker-compose.yml"
+          source: "portfolio/docker-compose.yml"
           target: "portfolio_flask"
           strip_components: 1
