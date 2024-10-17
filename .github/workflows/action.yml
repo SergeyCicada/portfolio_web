@@ -34,7 +34,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          source: "conf/nginx.conf"
+          source: "conf/*"
           target: "portfolio_flask/"
       - name: copy static files to server
         uses: appleboy/scp-action@master
