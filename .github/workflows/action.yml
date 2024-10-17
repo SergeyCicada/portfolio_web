@@ -50,7 +50,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          source: "portfolio/docker-compose.yml"
+          source: "/docker-compose.yml"
           target: "portfolio_flask/"
       - name: deploy app
         uses: appleboy/ssh-action@master
