@@ -62,3 +62,4 @@ jobs:
             cd portfolio_flask/portfolio
             echo ${{ secrets.PASSWORD }} | sudo -S docker-compose down
             echo ${{ secrets.PASSWORD }} | sudo -S docker-compose up -d  
+
