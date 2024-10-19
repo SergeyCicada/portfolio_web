@@ -1,5 +1,6 @@
 name: Build and Deploy workflow
 on: [push]
+
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
@@ -53,7 +54,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           source: "portfolio/docker-compose.yml"
           target: "portfolio_flask/"
-      - name: stop old application
+      - name: deploy app
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -61,22 +62,5 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             cd portfolio_flask/portfolio
-            echo ${{ secrets.PASSWORD }} | sudo -S docker-compose down  # Остановка старого приложения
-      - name: start nginx and app
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          script: |
-            cd portfolio_flask/portfolio
-            echo ${{ secrets.PASSWORD }} | sudo -S docker-compose up -d  # Запуск Nginx и нового приложения
-      - name: obtain SSL certificates
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          script: |
-            cd portfolio_flask/portfolio
-            echo ${{ secrets.PASSWORD }} | sudo -S docker-compose run --rm certbot certonly --webroot --webroot-path=/var/www/certbot -d kelmeportfolio.ru -d www.kelmeportfolio.ru
+            echo ${{ secrets.PASSWORD }} | sudo -S docker-compose down
+            echo ${{ secrets.PASSWORD }} | sudo -S docker-compose up -d
