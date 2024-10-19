@@ -60,7 +60,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             cd portfolio_flask/portfolio
-            sudo docker-compose run --rm certbot certonly --webroot --webroot-path=/var/www/certbot -d kelmeportfolio.ru -d www.kelmeportfolio.ru
+            echo ${{ secrets.PASSWORD }} | sudo -S docker-compose run --rm certbot certonly --webroot --webroot-path=/var/www/certbot -d kelmeportfolio.ru -d www.kelmeportfolio.ru
       - name: deploy app
         uses: appleboy/ssh-action@master
         with:
