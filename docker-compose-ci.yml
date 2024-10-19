@@ -1,6 +1,12 @@
 services:
   app:
     image: sergeykelme/portfolio:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+    environment:
+      FLASK_SECRET_KEY: ${FLASK_SECRET_KEY}
+      MAIL_SENDER: ${MAIL_SENDER}
+      MAIL_PASSWORD: ${MAIL_PASSWORD}
+      RECAPTCHA_SITE_KEY: ${RECAPTCHA_SITE_KEY}
+      RECAPTCHA_SECRET_KEY: ${RECAPTCHA_SECRET_KEY}
     ports:
       - "8000:8000"
 
