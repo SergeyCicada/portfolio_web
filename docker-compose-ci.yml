@@ -9,7 +9,7 @@ services:
     volumes:
       - /home/deploy/portfolio_flask/portfolio/conf/nginx.conf:/etc/nginx/conf.d/default.conf
       - /home/deploy/portfolio_flask/portfolio/static:/app/static
-      - /home/deploy/portfolio_flask/portfolio/certbot/conf:/etc/letsencrypt  # Директория для сертификатов
+      - /etc/letsencrypt:/etc/letsencrypt  # Монтируем сертификаты
       - /home/deploy/portfolio_flask/portfolio/certbot/www:/var/www/certbot
     ports:
       - "80:80"
@@ -20,7 +20,6 @@ services:
   certbot:
     image: certbot/certbot
     volumes:
-      - /home/deploy/portfolio_flask/portfolio/certbot/conf:/etc/letsencrypt
+      - /etc/letsencrypt:/etc/letsencrypt  # Монтируем сертификаты
       - /home/deploy/portfolio_flask/portfolio/certbot/www:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
-
