@@ -33,10 +33,10 @@ def get_thank():
 
 @app.route('/message/', methods=['POST'])
 def get_message():
-    name = request.args.get('name')
-    email = request.args.get('email')
-    phone = request.args.get('phone')
-    message = request.args.get('text')
+    name = request.form.get('name')
+    email = request.form.get('email')
+    phone = request.form.get('phone')
+    message = request.form.get('text')
     recaptcha_response = request.form.get('g-recaptcha-response')
 
     # Проверка reCAPTCHA
@@ -58,7 +58,7 @@ def get_message():
         send_email(string_send)
         flash('Your message has been sent successfully!', 'success')
     except Exception as e:
-            # Error handling during submission."
+        # Error handling during submission.
         flash(f'An error occurred while sending your message: {str(e)}', 'error')
         return redirect(url_for('get_thank'))
 
