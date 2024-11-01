@@ -15,7 +15,7 @@ services:
     volumes:
       - /home/deploy/portfolio_flask/portfolio/conf/nginx.conf:/etc/nginx/conf.d/default.conf
       - /home/deploy/portfolio_flask/portfolio/static:/app/static
-      - /etc/letsencrypt:/etc/letsencrypt  # Монтируем сертификаты
+      - /etc/letsencrypt:/etc/letsencrypt
       - /home/deploy/portfolio_flask/portfolio/certbot/www:/var/www/certbot
     ports:
       - "80:80"

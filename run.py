@@ -39,7 +39,7 @@ def get_message():
     message = request.form.get('text')
     recaptcha_response = request.form.get('g-recaptcha-response')
 
-    # Проверка reCAPTCHA
+    # Check reCAPTCHA
     secret_key = os.environ.get('RECAPTCHA_SECRET_KEY')
     payload = {
         'secret': secret_key,
