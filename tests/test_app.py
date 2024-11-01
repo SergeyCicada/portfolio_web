@@ -15,7 +15,7 @@ class TestConfig(TestCase):
     def test_get_about(self):
         response = self.client.get('/about/')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'- Programming Language: Python', response.data)
+        self.assertIn(b'Programming Language: Python<', response.data)
 
     def test_get_contacts(self):
         response = self.client.get('/contacts/')
