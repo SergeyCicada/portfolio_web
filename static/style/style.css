@@ -149,7 +149,13 @@ p {
     font-size: 1rem;
     color: #fff;
 }
-
+.text ul {
+    list-style-type: none;
+    padding: 0;
+}
+.text li {
+    margin-bottom: 5px;
+}
 /* Button
 ====================*/
 
